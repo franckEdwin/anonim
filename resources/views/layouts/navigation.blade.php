@@ -10,80 +10,6 @@
           {{ $site_name }}
           @endif
       </a>
-        
-      {{-- <div class="navbar-nav flex-row order-md-last">
-          @if(Auth::check())
-          <!-- Notifications -->
-          <div class="nav-item dropdown d-md-flex me-3">
-              <a href="javascript:void(0);" onclick="markAsRead()" class="nav-link px-0" data-bs-toggle="modal" data-bs-target="#notifications">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" /><path d="M9 17v1a3 3 0 0 0 6 0v-1" /></svg>
-                  @if(Auth::user()->notification_count() >= 1)
-                  <span class="badge badge-pill bg-red" id="notify">
-                      {{ Auth::user()->notification_count() }}
-                  </span>
-                  @endif
-              </a>
-          </div>
-          <!-- end Notifications -->
-          
-          <div class="nav-item dropdown">
-              <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu" aria-expanded="false">
-                  @if(!empty(Auth::user()->avatar))
-                  <span class="avatar avatar-sm" style="background-image: url({{ asset('storage/app/public/images/avatar/'.Auth::user()->avatar) }})"></span>
-                  @else
-                  <span class="avatar avatar-sm">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
-                  </span>
-                  @endif
-                  
-              </a>
-
-              
-
-            
-
-
-            
-              <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <a href="{{ url('profile/@'.Auth::user()->name) }}" class="dropdown-item">{{ __('main.nav_profile') }}</a>
-                  <a href="{{ url('favorites') }}" class="dropdown-item">{{ __('main.nav_saved') }}</a>
-                  <div class="dropdown-divider"></div>
-                  <a href="{{ url('settings/edit') }}" class="dropdown-item">{{ __('main.nav_account') }}</a>
-                  @hasrole('moderator')
-                  <a href="{{ url('admin/posts') }}" class="dropdown-item">
-                      {{ __('main.nav_post_moderation') }}
-                  </a>
-                  @endhasrole
-                  @hasrole('admin')
-                  <a href="{{ url('admin') }}" class="dropdown-item">
-                      {{ __('main.nav_administration') }}
-                  </a>
-                  @endhasrole
-                  <a href="{{ route('logout') }}" class="dropdown-item" 
-                     onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">{{ __('main.nav_logout') }}</a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                      @csrf
-                  </form>
-              </div>
-              
-          </div>
-          
-          
-
-          @else
-          <li class="nav-item">
-              <a class="nav-link" href="{{ url('login') }}">
-                  <span class="nav-link-icon d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M20 12h-13l3 -3m0 6l-3 -3" /></svg>
-                  </span>
-                  <span class="nav-link-title d-none d-sm-block">
-                      {{ __('main.nav_login') }}
-                  </span>
-              </a>
-          </li>
-          @endif  
-      </div> --}}
-
       <div class="navbar-nav flex-row order-md-last">
         @if (Auth::check())
             <!-- Notifications -->
@@ -236,13 +162,16 @@
                               </div>
                           </div>
                       @endhasrole
-                      <a href="{{ route('logout') }}"
+                      <div class="d-grid py-4 px-7 pt-8">
+                        <a href="{{ route('logout') }}"
                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                           class="btn btn-outline-primary">Se Déconnecter</a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST"
                           style="display: none;">
                           @csrf
                       </form>
+                      </div>
+                      
                   </div>
               </div>
           </div>
