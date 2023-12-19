@@ -39,7 +39,7 @@
                 {{-- <img src="resources/views/assets2/dist/images/logos/dark-logo.svg" width="180" alt=""> --}}
               </a>
               <div class="d-none d-xl-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
-                {{-- <img src="resources/views/assets2/dist/images/backgrounds/login-security.svg" alt="" class="img-fluid" width="500"> --}}
+                <img src="dist/images/backgrounds/Alone-pana.svg" alt="" class="img-fluid" width="800">
               </div>
             </div>
             <div class="col-xl-5 col-xxl-4">
