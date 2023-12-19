@@ -1,0 +1,10 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#192964",
+        "titleBar.activeBackground": "#23398C",
+        "titleBar.activeForeground": "#FAFBFE"
+    },
+    "[php]": {
+        "editor.formatOnPaste": false
+    }
+}
