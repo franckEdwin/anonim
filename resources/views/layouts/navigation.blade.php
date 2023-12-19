@@ -81,8 +81,6 @@
                 @endauth
               </div>
 
-
-
             </div>
             <div class="message-body">
               {{-- <a href="./page-user-profile.html" class="py-8 px-7 mt-8 d-flex align-items-center"> --}}
@@ -166,19 +164,12 @@
       @else
       <li class="nav-item">
         <a class="nav-link" href="{{ url('login') }}">
-          <span class="nav-link-icon d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
-              height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
-              <path d="M20 12h-13l3 -3m0 6l-3 -3" />
-            </svg>
-          </span>
           <span class="nav-link-title d-none d-sm-block">
-            {{ __('main.nav_login') }}
+            <button type="submit" class="btn btn-primary w-100">{{ __('Se connecter') }}</button>
           </span>
         </a>
       </li>
+      
       @endif
     </div>
 
@@ -186,7 +177,7 @@
       <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
         <ul class="navbar-nav">
 
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link strong dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button"
               aria-expanded="false">
               <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +258,7 @@
                 </div>
               </div>
             </div>
-          </li>
+          </li> --}}
         </ul>
 
         <div class="ms-md-auto ps-md-2 py-2 py-md-0 me-md-2 order-first order-md-last flex-grow-1">
