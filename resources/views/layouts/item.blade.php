@@ -35,7 +35,7 @@
                 </div>
 
                 @if(!empty($item->image))
-                    <a href="javascript:void(0)">
+                    <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}">
                         <img src="{{ url('storage/app/public/'.$item->image) }}" alt="Image" style="height:auto; width:auto; " class="img-fluid rounded-1 mt-4">
                     </a>
                 @endif

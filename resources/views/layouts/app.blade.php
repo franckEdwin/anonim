@@ -37,7 +37,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('resources/views/assets/css/tabler.min.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('resources/views/assets/css/tabler.min.css') }}"> --}}
         <link rel="stylesheet" href="{{ asset('resources/views/assets/css/toastr.css') }}">
         <link rel="stylesheet" href="{{ asset('resources/views/assets/css/extra.css') }}">
         <link rel="stylesheet" href="{{ asset('resources/views/assets/css/pulse.css') }}">
