@@ -40,6 +40,7 @@
         <link rel="stylesheet" href="{{ asset('resources/views/assets/css/tabler.min.css') }}">
         <link rel="stylesheet" href="{{ asset('resources/views/assets/css/toastr.css') }}">
         <link rel="stylesheet" href="{{ asset('resources/views/assets/css/extra.css') }}">
+        <link rel="stylesheet" href="{{ asset('resources/views/assets/css/pulse.css') }}">
 
         <link rel="stylesheet" href="{{ asset('resources/views/assets2/dist/libs/aos/dist/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('resources/views/assets2/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}">

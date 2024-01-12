@@ -392,7 +392,7 @@
 
                 </ul>
 
-                <a href="#" class="btn btn-white btn-pill strong" data-bs-toggle="modal" data-bs-target="#modal--write--story">
+                <a href="#" class="btn btn-white btn-pill strong pulse-button" data-bs-toggle="modal" data-bs-target="#modal--write--story">
                   <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button">
                     <i class="ti ti-settings fs-7" data-bs-toggle="tooltip" data-bs-placement="top"></i>
                   </button>
