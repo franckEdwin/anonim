@@ -55,6 +55,7 @@
             @include('layouts.navigation')
             <div class="content">
                 <div class="container-xl">
+                    <p></p><br><br><br><br><br>
                     @yield('content')
                 </div>
             </div>
