@@ -11,16 +11,17 @@
        <header class="app-header">
         <nav class="navbar navbar-expand-xl navbar-light container-fluid px-0">
           <ul class="navbar-nav">
-            <li class="nav-item d-block d-sm-none">
-                <a class="nav-link sidebartoggler ms-n3" id="sidebarCollapse" href="javascript:void(0)">
-                    <i class="ti ti-menu-2"></i>
-                </a>
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler ms-n3" id="sidebarCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
             </li>
-            
-            <li class="nav-item d-none d-sm-block">
-                <a href="{{ url('/') }}" class="text-nowrap nav-link">
-                    <img src="{{ asset('dist/images/logos/anonim-logo.svg') }}" width="120" alt="">
-                </a>
+            <li class="nav-item d-none d-xl-block">
+              <a href="index.html" class="text-nowrap nav-link">
+                               
+                <img src="dist/images/logos/anonim-logo.svg" width="120" alt="">
+               
+              </a>
             </li>
           </ul>
           <ul class="navbar-nav quick-links d-none d-xl-flex">
@@ -59,7 +60,7 @@
                  
                  
                  
-                   
+                  <li class="nav-item dropdown">
                    
 
 
@@ -137,7 +138,7 @@
                                             </div>
                                         </div>
                                         <div class="message-body">
-                                            <a href="{{ url('profile/@'.Auth::user()->name) }}"
+                                            <a href="{{ url('profile/@') }}"
                                                 class="py-8 px-7 mt-8 d-flex align-items-center dropdown-item">
                                                 <span
                                                     class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
@@ -230,7 +231,7 @@
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('login') }}">
-                                        <button type="submit" class="btn btn-danger fs-2 fw-semibold lh-sm">{{ __('Se connecter') }}</button>
+                                        <button type="submit" class="btn btn-secondary w-10">{{ __('Se connecter') }}</button>
                                 </a>
                             </li>
             

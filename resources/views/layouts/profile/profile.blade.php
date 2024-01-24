@@ -5,31 +5,45 @@
         <div class="col-auto">
             <span class="avatar avatar-md avatar-rounded" @if(!empty($user->avatar)) style="background-image: url({{ asset('storage/app/public/images/avatar/'.$user->avatar) }})" @endif>
                 @if(empty($user->avatar))
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                <img src="{{ asset('storage/app/public/images/avatar/user-2.jpg') }}" alt="" class="rounded-pill img-fluid" width="60" height="60">
                 @endif
 
                 @if(Cache::has('user-is-online-' . $user->id))
                 <span class="badge bg-green" title="{{ __('main.card_online') }}"></span>
+                
+                <span class="position-absolute bottom-0 end-0 p-1 badge rounded-pill bg-success">
+                    <span class="visually-hidden">{{ __('main.card_online') }}</span>
+                  </span>
                 @else
                 <span class="badge bg-x" title="{{ __('main.card_offline') }}"></span>
+                <span class="position-absolute bottom-0 end-0 p-1 badge rounded-pill bg-danger">
+                    <span class="visually-hidden">{{ __('main.card_offline') }}</span>
+                  </span>
+                
+                @endif
+            </span>
+
+            <span class="avatar avatar-xs avatar-rounded">
+                @if(!empty($user->avatar))
+                    <img src="{{ asset('storage/app/public/images/avatar/'.$user->avatar) }}" alt="user_avatar" width="60" height="60" class="rounded-circle" />
                 @endif
             </span>
         </div>
         <div class="col">
-            <h2 class="page-title text-white">
+            <h2 class="page-title text-dark fw-semibold">
                 {{ $user->name }}
             </h2>
             
             <div class="page-subtitle">
                 <div class="row">
-                    <div class="col-auto text-light">
+                    <div class="col-auto text-dark fw-semibold">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20l10 -10m0 -5v5h5m-9 -1v5h5m-9 -1v5h5m-5 -5l4 -4l4 -4" /><path d="M19 10c.638 -.636 1 -1.515 1 -2.486a3.515 3.515 0 0 0 -3.517 -3.514c-.97 0 -1.847 .367 -2.483 1m-3 13l4 -4l4 -4" /></svg>
                         {{ __('main.profile_count_post', ['count' => $user->all_posts_user->count()]) }}
                     </div>
                 
-                    <div class="col-auto text-light">
+                    <div class="col-auto text-dark fw-semibold">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /><line x1="12" y1="12" x2="12" y2="12.01" /><line x1="8" y1="12" x2="8" y2="12.01" /><line x1="16" y1="12" x2="16" y2="12.01" /></svg>
-                        <a href="{{ route('user_comments', ['username'=>$user->name])}}" class="text-light active">
+                        <a href="{{ route('user_comments', ['username'=>$user->name])}}" class="text-dark fw-semibold active">
                             {{ __('main.profile_count_comments', ['count' => $user->comments->count()]) }}
                         </a>
                     </div>
@@ -40,13 +54,13 @@
         
         <div class="col-auto">
             <a href="{{ route('points_section') }}" class="btn btn-pill btn-lg bg-orange-lt strong">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-yellow" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5h12l3 5l-8.5 9.5a0.7 .7 0 0 1 -1 0l-8.5 -9.5l3 -5" /><path d="M10 12l-2 -2.2l.6 -1" /></svg> 
+                <i class="ti ti-star text-warning fs-6"></i>
                 {{ $user->total_point_count() }}
             </a>
         </div>
     </div>
 </div>
-
+<br>
 <div class="row justify-content-center">
     <div class="col-lg-8">
         @if($statusPoints == 1)
@@ -57,17 +71,39 @@
                 
                 <div class="btn-list">
                     @foreach($badgeList as $badge)
-                    <img src="{{ asset('storage/app/public/images/badges/'.$badge->icon) }}" class="avatar avatar-md rounded-circle p-1 @if($user->total_point_count() < $badge->score) opacity-custom @endif" data-bs-toggle="tooltip" data-bs-html="true" title="{{ $badge->name }} - {{ __('points.scoring', ['scoring'=>$badge->score]) }}">
+                    <img src="{{ asset('storage/app/public/images/badges/'.$badge->icon) }}" class="avatar avatar-md rounded-circle p-1 @if($user->total_point_count() < $badge->score) opacity-custom @endif" data-bs-toggle="tooltip" data-bs-html="true" title="{{ $badge->name }} - {{ __('points.scoring', ['scoring'=>$badge->score]) }}" width="75" height="75">
                     @endforeach
                 </div>
+
+                {{-- <li>
+                    <a href="javascript:void(0)" class="px-4 py-3 bg-hover-light-black d-flex align-items-start justify-content-between chat-user bg-light" id="chat_user_1" data-user-id="1">
+                      <div class="d-flex align-items-center">
+                        <span class="position-relative">
+                          <img src="{{ asset('storage/app/public/images/badges/'.$badge->icon) }}" alt="user1" width="48" height="48" class="rounded-circle" />
+                          <span class="position-absolute bottom-0 end-0 p-1 badge rounded-pill bg-danger">
+                            <span class="visually-hidden">New alerts</span>
+                          </span>
+                        </span>
+                        <div class="ms-3 d-inline-block w-75">
+                          <h6 class="mb-1 fw-semibold chat-title" data-username="James Anderson">Michell Flintoff</h6>
+                          <span class="fs-3 text-truncate text-body-color d-block">You: Yesterdy was great...</span>
+                        </div>
+                      </div>
+                      <p class="fs-2 mb-0 text-muted">15 minutes</p>
+                    </a>
+                  </li> --}}
                 
-                <progress class="progress progress-bar-indeterminate h-3 mt-2" value="{{ $user->total_point_count() }}" max="{{ $topBadge->score }}" data-bs-toggle="tooltip" data-bs-html="true" title="{{ __('points.scoring', ['scoring'=>$user->total_point_count()]) }}"></progress>
+                {{-- <progress class="progress progress-bar-indeterminate h-3 mt-2" value="{{ $user->total_point_count() }}" max="{{ $topBadge->score }}" data-bs-toggle="tooltip" data-bs-html="true" title="{{ __('points.scoring', ['scoring'=>$user->total_point_count()]) }}"></progress>
+                
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                </div> --}}
                 
             </div>
         </div>
         @else
         <div class="alert alert-danger bg-white" role="alert">
-            <div class="d-flex">
+            <div class=" d-flex">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon alert-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                 </div>

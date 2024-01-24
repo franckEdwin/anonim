@@ -55,7 +55,7 @@
             @include('layouts.navigation')
             <div class="content">
                 <div class="container-xl">
-                    <p></p><br><br><br><br><br>
+                    <br><br><br><br><br><br>
                     @yield('content')
                 </div>
             </div>
@@ -63,7 +63,7 @@
         
         @include('layouts.footer')
 
-        <!-- Scripts -->
+        
        
         <script src="{{ asset('resources/views/assets/js/tabler.min.js') }}" defer></script>
         <script src="{{ asset('resources/views/assets/libs/jquery/dist/jquery.min.js') }}"></script>

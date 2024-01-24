@@ -4,7 +4,7 @@
         <div class="d-sm-flex d-block align-items-center justify-content-between mb-7">
           <div class="mb-3 mb-sm-0">
             <h5 class="card-title fw-semibold"> {{ __('main.w_top_users') }}</h5>
-            <p class="card-subtitle mb-0">For the best</p>
+            <p class="card-subtitle mb-0">Scoreboard</p>
           </div>
           
         </div>
@@ -19,7 +19,7 @@
             <tbody class="border-top">
                 @forelse($topUser as $user)
               <tr>
-                <td class="ps-0">
+                {{-- <td class="ps-0">
                     <a href="{{ route('profile', $user->name) }}" class="">
                  
                         <div class="d-flex align-items-center">
@@ -30,33 +30,53 @@
                       <h6 class="fw-semibold mb-1">{{ $user->name }}</h6>
                       
                       @if(Cache::has('user-is-online-' . $user->id))
-                      <span class="badge fw-semibold bg-light-primary text-primary">Online</span>
+                      <span class="badge fw-semibold bg-light-success text-success">Online</span>
                       @else
-                      <span class="badge fw-semibold bg-light-info text-info">Offline</span>
+                      <span class="badge fw-semibold bg-light-danger text-danger">Offline</span>
                       @endif
                     </div>
                   </div>
                
                 </a>
-                </td>
+                </td> --}}
 
-                {{-- <td>
+                <td class="ps-0">
                     <a href="{{ route('profile', $user->name) }}" class="text-decoration-none strong">
-                        <span class="avatar avatar-xs avatar-rounded" @if(!empty($user->avatar)) style="background-image: url({{ asset('storage/app/public/images/avatar/'.$user->avatar) }})" @endif>
-                        @if(empty($user->avatar))
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
-                            @endif
 
-                            @if(Cache::has('user-is-online-' . $user->id))
-                            <span class="badge bg-green" title="{{ __('main.card_online') }}"></span>
-                            @else
-                            <span class="badge bg-x" title="{{ __('main.card_offline') }}"></span>
+                      <div class="d-flex align-items-center">
+                        <div class="me-2 pe-1">
+                      <span class="avatar avatar-xs avatar-rounded" @if(!empty($user->avatar)) img src="{{ asset('storage/app/public/images/avatar/'.$user->avatar) }}');" @endif></span>
+                    
+                      <span class="avatar avatar-xs avatar-rounded">
+                        @if(!empty($user->avatar))
+                            <img src="{{ asset('storage/app/public/images/avatar/'.$user->avatar) }}" alt="user_avatar" width="40" height="40" class="rounded-circle" />
+                        @endif
+                        
+                      </span>
+                   
+
+                        @if(empty($user->avatar))
+                            <img src="{{ asset('storage/app/public/images/avatar/user-2.jpg') }}" alt="" class="rounded-pill img-fluid" width="40" height="40">
                             @endif
+                          </div>
+
+                            <div>
+                              <h6 class="fw-semibold mb-1">{{ $user->name }}</h6>
+                              
+                              @if(Cache::has('user-is-online-' . $user->id))
+                              <span class="badge fw-semibold bg-light-success text-success">Online</span>
+                              @else
+                              <span class="badge fw-semibold bg-light-danger text-danger">Offline</span>
+                              @endif
+                            </div>
+
                         </span>
-                        <span class="text-truncate">{{ $user->name }}</span>
+                      </div>
+                       
                     </a>
                 </td>
-                 --}}
+                
+                
                 <td>
                   <p class="mb-0 fs-3"> {{ $user->total_point_count() }}</p>
                 </td>

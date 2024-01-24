@@ -146,7 +146,7 @@ return [
     'years_old' => ":age ans",
     'card_likes' => "likes",
     'card_views' => "vues",
-    'card_comments' => ":count commentaires",
+    'card_comments' => ":count",
     'card_edit' => "Modifier",
     'card_delete' => "Supprimer",
     'card_report' => "Signaler",
