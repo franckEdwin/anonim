@@ -43,7 +43,7 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <input type="text"
-                                    class="form-control form-control-lg @error('title', 'write') is-invalid @enderror"
+                                    class="form-control form-control @error('title', 'write') is-invalid @enderror"
                                     name="title" value="{{ old('title') }}" placeholder="{{ __('main.title') }}">
 
                                 @error('title', 'write')
@@ -146,7 +146,7 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <input type="text"
-                                    class="form-control form-control-lg @error('title', 'write') is-invalid @enderror"
+                                    class="form-control form-control @error('title', 'write') is-invalid @enderror"
                                     name="title" value="{{ old('title') }}" placeholder="{{ __('main.title') }}">
 
                                 @error('title', 'write')
@@ -159,7 +159,7 @@
 
                             <div class="mb-3">
                                 <div style="position: relative;">
-                                    <textarea class="form-control form-control-lg @error('story', 'write') is-invalid @enderror" name="story"
+                                    <textarea class="form-control form-control @error('story', 'write') is-invalid @enderror" name="story"
                                         rows="6" placeholder="{{ __('main.story') }}" oninput="updateCharacterCount(this)">{{ old('story') }}</textarea>
 
                                     <div id="characterCount" style="position: absolute; bottom: 5px; right: 5px;"></div>
@@ -171,6 +171,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            
 
                             <div class="form-group mb-3 row">
                             <div class="col">
@@ -183,6 +184,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            
                         </div>
                             {{-- <div class="mb-3">
                                 <label class="form-label">{{ __('main.tags') }}</label>
@@ -193,7 +195,7 @@
 
                             <div class="mb-3">
                                 <div class="col">
-                                    <div class="form-selectgroup form-selectgroup-pills  @error('category_id', 'write') is-invalid @enderror">
+                                    <div class="form-check form-check-primary form-check-inline  @error('category_id', 'write') is-invalid @enderror">
                                         @foreach ($categories as $category)
                                             <label class="form-selectgroup-item form-check-label">
                                                 <input type="radio" id="category_id" name="category_id"
@@ -221,6 +223,8 @@
                                 </div>
                             </div>
 
+                            
+
                         </div>
 
                         <input type="hidden" name="genders_id" value="{{ Auth::user()->genders_id }}">
@@ -228,16 +232,12 @@
                             value="{{ Carbon::now()->diffInYears(Auth::user()->birth) }}">
 
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <circle cx="12" cy="12" r="9"></circle>
-                                    <line x1="9" y1="12" x2="15" y2="12"></line>
-                                    <line x1="12" y1="9" x2="12" y2="15"></line>
-                                </svg> {{ __('main.btn_send') }}
-                            </button>
+                                <button type="submit" class="btn btn-info font-medium rounded-pill px-4">
+                                    <div class="d-flex align-items-center">
+                                      <i class="ti ti-send me-2 fs-4"></i>
+                                      {{ __('main.btn_send') }}
+                                    </div>
+                                  </button>
                         </div>
 
                     </form>

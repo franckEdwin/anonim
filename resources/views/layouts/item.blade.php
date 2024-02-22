@@ -49,7 +49,7 @@
                 <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}">
             @endif
                 <!-- ... Autres balises et éléments HTML ... -->
-                <p class="fs-5 my-4 fw-semibold text-black d-block lh-sm">{{ $item->title }}</p>
+                <p class="fs-5 my-4 fw-semibold d-block lh-sm">{{ $item->title }}</p>
             @if(Auth::check())
                 </a>
             @endif
@@ -182,7 +182,7 @@
                 <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}">
             @endif
                 <!-- ... Autres balises et éléments HTML ... -->
-                <p class="fs-5 my-4 fw-semibold text-black d-block lh-sm">{{ $item->title }}</p>
+                <p class="fs-5 my-4 fw-semibold d-block lh-sm">{{ $item->title }}</p>
             @if(Auth::check())
                 </a>
             @endif

@@ -45,6 +45,7 @@
         <link rel="stylesheet" href="{{ asset('resources/views/assets2/dist/libs/aos/dist/aos.css') }}">
         <link rel="stylesheet" href="{{ asset('resources/views/assets2/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('resources/views/assets2/dist/css/style.min.css') }}">
+        <link id="themeColors" rel="stylesheet" href="../../dist/css/style.min.css" />
         
         <script type="text/javascript">"use strict";var APP_URL = {!! json_encode(url('/')) !!}</script>
         
