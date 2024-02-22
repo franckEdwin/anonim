@@ -18,7 +18,7 @@ return [
     'nav_random' => "Aléatoire",
     'nav_most_liked' => "Plus aimé",
     'nav_most_commented' => "Plus commenté",
-    'nav_submit_a_story' => "Soumettre une histoire",
+    'nav_submit_a_story' => "Faire un post",
     'nav_login' => "Se connecter",
     'nav_register' => "S'inscrire",
     'nav_profile' => "Profil",
@@ -43,10 +43,10 @@ return [
     'notifications' => "Notifications",
     'see_all_notifications' => "Voir toutes les notifications",
     'there_are_no_notifications' => "Il n'y a pas de notifications.",
-    'commented_on_your' => "a commenté sur votre",
+    'commented_on_your' => "a commenté votre",
     'liked_your' => "a aimé votre",
     'started_following_you' => "a commencé à vous suivre.",
-    'post' => "publication.",
+    'post' => "post",
     'mark_as_read' => "Marquer comme lu",
     
     /*
@@ -58,7 +58,7 @@ return [
     */
     
     'home' => "Une accroche pour le site web !",
-    'write' => "Ecrire une histoire",
+    'write' => "Faire un post",
     'users' => "Utilisateurs",
     'viral' => "Secrets viraux",
     'random' => "Secrets aléatoires",
@@ -128,7 +128,7 @@ return [
     'btn_update' => "Mettre à jour",
     'btn_remove' => "Supprimer",
     'btn_delete' => "Supprimer",
-    'btn_submit_a_story' => "Ecrire une histoire",
+    'btn_submit_a_story' => "Faire un post",
     'btn_send' => "Envoyer",
     'btn_edit_profile' => "Modifier le profil",
     'btn_follow' => "Suivre",

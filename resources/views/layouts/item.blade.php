@@ -66,22 +66,28 @@
             </div>
             
                 <div class="d-flex align-items-center gap-4">
-                    {{-- <div class="d-flex align-items-center gap-2">
-                        <div class="col">
-                            <a href="javascript:void(0);" onclick="likePost({{ $item->id }})">
-                                <svg xmlns="http://www.w3.org/2000/svg" id="like-icon-{{ $item->id }}" class="icon @if(Auth::check() && Auth::user()->hasLiked($item)) icon-filled text-danger @else text-muted @endif" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
-                            </a>
-                            <i class="ti ti-thumb-up-{{ $item->id }}"></i>
-                            <span id="like-{{ $item->id }}">@json($item->likers()->count())</span>
-                        </div>
-                    </div> --}}
 
                     <div class="d-flex align-items-center gap-2">
+                        <div class="col">
+                            <a href="javascript:void(0);" onclick="likePost({{ $item->id }})" class="d-flex">
+                                <i  id="like-icon-{{ $item->id }}" class="ti ti-heart-filled text-dark fs-6 @if(Auth::check()) @if(Auth::user()->hasLiked($item)) icon-filled text-danger @else text-muted @endif @else text-muted @endif"></i>
+                                {{-- id="like-icon-{{ $item->id }}" class="ti ti-heart-filled text-dark fs-6 @if(Auth::check()) @if(Auth::user()->hasLiked($item)) icon-filled text-danger @else text-muted @endif @else text-muted @endif" --}}
+                                <span class="ms-1 text-dark" id="like-{{ $item->id }}">@json($item->likers()->count())</span>
+                            </a>
+                            
+                           
+                        </div>
+                    </div>
+
+                    {{-- <div class="d-flex align-items-center gap-2">
                         <a href="javascript:void(0);" onclick="toggleLike({{ $item->id }})" class="d-flex">
                             <i id="heart-icon-{{ $item->id }}" class="ti ti-heart-filled text-dark fs-6"></i>
                             <span class="ms-1 text-dark" id="like-{{ $item->id }}">@json($item->likers()->count())</span>
                         </a>
-                    </div>
+                    </div> --}}
+
+                            
+
                     
                     <style>
                         .liked {
@@ -194,11 +200,23 @@
 
                 <div class="d-flex align-items-center gap-4">
                     
-                    <div class="d-flex align-items-center gap-2">
+                    {{-- <div class="d-flex align-items-center gap-2">
                         <a href="javascript:void(0);" onclick="toggleLike({{ $item->id }})" class="d-flex">
                             <i id="heart-icon-{{ $item->id }}" class="ti ti-heart-filled text-dark fs-6"></i>
                             <span class="ms-1 text-dark" id="like-{{ $item->id }}">@json($item->likers()->count())</span>
                         </a>
+                    </div> --}}
+
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="col">
+                            <a href="javascript:void(0);" onclick="likePost({{ $item->id }})" class="d-flex">
+                                <i  id="like-icon-{{ $item->id }}" class="ti ti-heart-filled text-dark fs-6 @if(Auth::check()) @if(Auth::user()->hasLiked($item)) icon-filled text-danger @else text-muted @endif @else text-muted @endif"></i>
+                                {{-- id="like-icon-{{ $item->id }}" class="ti ti-heart-filled text-dark fs-6 @if(Auth::check()) @if(Auth::user()->hasLiked($item)) icon-filled text-danger @else text-muted @endif @else text-muted @endif" --}}
+                                <span class="ms-1 text-dark" id="like-{{ $item->id }}">@json($item->likers()->count())</span>
+                            </a>
+                            
+                           
+                        </div>
                     </div>
                     
                     <style>
@@ -263,21 +281,3 @@
     @endif
 </div>
 
-<script>
-    function toggleLike(postId) {
-        var heartIcon = document.getElementById('heart-icon-' + postId);
-        var likeCount = document.getElementById('like-' + postId);
-
-        if (heartIcon.classList.contains('text-danger')) {
-            // L'utilisateur a déjà aimé, alors dislike
-            heartIcon.classList.remove('text-danger', 'liked');
-            heartIcon.classList.add('text-dark');
-            likeCount.textContent = parseInt(likeCount.textContent) - 1;
-        } else {
-            // L'utilisateur n'a pas aimé, alors like
-            heartIcon.classList.remove('text-dark');
-            heartIcon.classList.add('text-danger', 'liked');
-            likeCount.textContent = parseInt(likeCount.textContent) + 1;
-        }
-    }
-</script>

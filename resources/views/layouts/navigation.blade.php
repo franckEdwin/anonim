@@ -56,36 +56,38 @@
                   <i class="ti ti-align-justified fs-7"></i>
                 </a>
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
-                 
-                 
-                 
-                   
-                   
-
 
                     <div class="navbar-nav flex-row order-md-last">
                         @if (Auth::check())
                             <!-- Notifications -->
-                            <div class="nav-item dropdown d-md-flex me-3">
-                                <a href="javascript:void(0);" onclick="markAsRead()" class="nav-link px-0" data-bs-toggle="modal"
-                                    data-bs-target="#notifications">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-                                        <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
-                                    </svg>
-                                    @if (Auth::user()->notification_count() >= 1)
-                                        <span class="badge badge-pill bg-red" id="notify">
-                                            {{ Auth::user()->notification_count() }}
-                                        </span>
-                                    @endif
+                           
+                            <li class="nav-item dropdown">
+                                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="ti ti-bell-ringing"></i>
+                                  <div class="notification bg-primary rounded-circle"></div>
                                 </a>
-                            </div>
-                            <!-- end Notifications -->
-            
+                                <div class="dropdown-menu content-dd dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                                  <div class="d-flex align-items-center justify-content-between py-3 px-7">
+                                    <h5 class="mb-0 fs-5 fw-semibold">Notifications</h5>
+                                    <span class="badge bg-primary rounded-4 px-3 py-1 lh-sm">5 new</span>
+                                  </div>
+                                  
+                                  <a class="" href="#"> @include('layouts.notification')</a>
+                                  
+                                  <div class="py-6 px-7 mb-1">
+                                   
+                                    <button class="btn btn-outline-primary w-100" onclick="window.location.href = '{{ url('notifications') }}'">{{ __('main.see_all_notifications') }}</button>
+
+                                  </div>
+                                 
+                                </div>
+                              </li>
+
+                            </li>
+
+                             <!-- end Notifications -->
+
+                            
             
             
                             <div class="nav-item dropdown">
@@ -97,9 +99,7 @@
                                                 <img src="{{ asset('storage/app/public/images/avatar/' . Auth::user()->avatar) }}"
                                                     class="rounded-circle" width="35" height="35" alt="" />
                                             @else
-                                                <span style="font-size: 30px;">
-                                                  <i class="ti ti-user-circle"></i>
-                                              </span>
+                                            <img src="{{ asset('storage/app/public/images/avatar/user-2.jpg') }}" alt="" class="rounded-pill img-fluid" width="35" height="35">
                                             @endif
                                         </div>
                                     </div>
@@ -115,15 +115,7 @@
                                                 <img src="{{ asset('storage/app/public/images/avatar/' . Auth::user()->avatar) }}"
                                                     class="rounded-circle" width="80" height="80" alt="" />
                                             @else
-                                                <span class="avatar avatar-sm">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="rounded-circle" width="35"
-                                                        height="35" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <circle cx="12" cy="7" r="4" />
-                                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                                    </svg>
-                                                </span>
+                                            <img src="{{ asset('storage/app/public/images/avatar/user-2.jpg') }}" alt="" class="rounded-pill img-fluid" width="80" height="80">
                                                
                                             @endif
                                             <div class="ms-3">
@@ -236,7 +228,9 @@
             
                         @endif
                     </div>
+
                     
+                </ul>            
                 </div>
                   </li>
                 </ul>
@@ -251,8 +245,10 @@
 
     @if (Auth::check())
     <!-- show notifications only if user is logged in -->
-    @include('layouts.notifications')
+    {{-- @include('layouts.notifications') --}}
+    {{-- @include('layouts.notification') --}}
 @endif
 
 <!-- form in modal write a story -->
 @include('layouts.modal.form_write_story')
+

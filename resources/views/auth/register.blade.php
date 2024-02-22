@@ -102,20 +102,20 @@
                     <button type="submit" class="btn btn-primary w-100">{{ __('Créer un compte') }}</button>
                 </div>
 
-                {{-- <div class="form-footer mt-3">
+                <div class="form-footer mt-3">
                     <button type="button" class="btn btn-secondary w-100" onclick="generateRandomAccount()">Générer un compte aléatoire</button>
                 </div>
 
                 <div class="form-footer mt-3">
                     <button type="button" class="btn btn-danger w-100" onclick="resetForm()">Réinitialiser</button>
-                </div> --}}
+                </div>
 
-                <!-- <div class="form-footer">
+                {{-- <div class="form-footer">
                     <label class="form-check">
                         <input type="checkbox" class="form-check-input">
                         <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms and policy</a>.</span>
                     </label>
-                </div> -->
+                </div> --}}
 
                 <div class="text-muted mt-4">
                     Déjà un compte ? <a href="{{ url('login') }}" tabindex="-1">Se connecter</a>
@@ -149,36 +149,40 @@
     <script src="resources/views/assets2/dist/js/custom.js"></script>
 
     <script>
-    function togglePasswordVisibility(inputId) {
-        var passwordInput = document.getElementById(inputId);
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
-        }
-    }
+      function togglePasswordVisibility(inputId) {
+          var passwordInput = document.getElementById(inputId);
+          if (passwordInput.type === "password") {
+              passwordInput.type = "text";
+          } else {
+              passwordInput.type = "password";
+          }
+      }
+  
+      function generateRandomAccount() {
+          // Générer des valeurs aléatoires pour le nom et l'email seulement
+          var randomName = "anonim" + Math.floor(Math.random() * 1000);
+          var randomEmail = "anonim" + Math.floor(Math.random() * 1000) + "@anonim.social";
+  
+          // Remplir les champs du formulaire avec les valeurs générées
+          document.getElementById("name").value = randomName;
+          document.getElementById("email").value = randomEmail;
+  
+          // Ne pas remplir le champ de mot de passe pour permettre à l'utilisateur de le saisir manuellement
+          document.getElementById("password").value = "";
+          document.getElementById("password-confirm").value = "";
+      }
+  
+      function resetForm() {
+          // Réinitialiser les valeurs des champs du formulaire
+          document.getElementById("name").value = "";
+          document.getElementById("password").value = "";
+          document.getElementById("password-confirm").value = "";
+          document.getElementById("email").value = "";
+      }
+  </script>
+  
+  
 
-    function generateRandomAccount() {
-        // Générer des valeurs aléatoires
-        var randomName = "user" + Math.floor(Math.random() * 1000);
-        var randomPassword = "password" + Math.floor(Math.random() * 1000);
-        var randomEmail = "user" + Math.floor(Math.random() * 1000) + "@email.com";
-
-        // Remplir les champs du formulaire avec les valeurs générées
-        document.getElementById("name").value = randomName;
-        document.getElementById("password").value = randomPassword;
-        document.getElementById("password-confirm").value = randomPassword;
-        document.getElementById("email").value = randomEmail;
-    }
-
-    function resetForm() {
-    // Réinitialiser les valeurs des champs du formulaire
-    document.getElementById("name").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("password-confirm").value = "";
-    document.getElementById("email").value = "";
-}
-</script>
   </body>
 </html>
 

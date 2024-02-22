@@ -43,9 +43,10 @@
                 
                     <div class="col-auto text-dark fw-semibold">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /><line x1="12" y1="12" x2="12" y2="12.01" /><line x1="8" y1="12" x2="8" y2="12.01" /><line x1="16" y1="12" x2="16" y2="12.01" /></svg>
-                        <a href="{{ route('user_comments', ['username'=>$user->name])}}" class="text-dark fw-semibold active">
+                        {{-- <a href="{{ route('user_comments', ['username'=>$user->name])}}" class="text-dark fw-semibold active">
                             {{ __('main.profile_count_comments', ['count' => $user->comments->count()]) }}
-                        </a>
+                        </a> --}}
+                        {{ __('main.profile_count_comments', ['count' => $user->comments->count()]) }}
                     </div>
                     
                 </div>
@@ -53,10 +54,16 @@
         </div>
         
         <div class="col-auto">
-            <a href="{{ route('points_section') }}" class="btn btn-pill btn-lg bg-orange-lt strong">
+            {{-- <a href="{{ route('points_section') }}" class="btn btn-pill btn-lg bg-orange-lt strong">
+                <i class="ti ti-star text-warning fs-6"></i>
+                {{ $user->total_point_count() }}
+            </a> --}}
+
+            <a href="" class="btn btn-pill btn-lg bg-orange-lt strong">
                 <i class="ti ti-star text-warning fs-6"></i>
                 {{ $user->total_point_count() }}
             </a>
+           
         </div>
     </div>
 </div>
@@ -66,7 +73,7 @@
         @if($statusPoints == 1)
         <!-- make sure you have set a Top Badge -->
         @if(!empty($topBadge))
-        <div class="card mb-3 shadow rounded-3">
+        <div class="card mb-3 rounded-3">
             <div class="card-body">
                 
                 <div class="btn-list">
@@ -119,7 +126,7 @@
         <!-- END make sure you have set a Top Badge -->
         @endif
         
-        <div class="card mb-3 shadow">
+        <div class="card mb-3">
             <div class="card-body">
                 
                 @if(empty($user->bio))
@@ -179,7 +186,7 @@
             </div>
         </div>
 
-        <div class="card mb-3 shadow">
+        <div class="card mb-3">
             <div class="card-body">
                 <p class="text-muted">
                     {{ __('main.member_since', ['date' => Carbon::parse($user->created_at)->diffForHumans()]) }}

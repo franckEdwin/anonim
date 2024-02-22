@@ -6,7 +6,13 @@
         <div class="card">
         <div class="card-body border-bottom">
             <div class="d-flex align-items-center gap-3">
+
+              @if(!empty($item->user->avatar))
               <img src="{{ asset('storage/app/public/images/avatar/'.$item->user->avatar) }}" alt="" class="rounded-circle" width="40" height="40">
+          @else
+              <!-- Si l'auteur du post n'a pas d'avatar, affichez une version par défaut -->
+              <img src="{{ asset('storage/app/public/images/avatar/user-2.jpg') }}" alt="" class="rounded-circle" width="40" height="40">
+          @endif
               <h6 class="fw-semibold mb-0 fs-4">{{ $item->user->name }}</h6>
               <p class="card-subtitle mb-0">
                 {{ $item->created_at->formatLocalized('%a, %b %d, %Y') }}
@@ -75,27 +81,50 @@
         <!-- end ads -->
         
         @forelse($randomItems as $item)
-        <div class="card card-sm mb-3 shadow">
-            <div class="card-header {{ $item->gender->bg_color }}">
-                <div class="col">
-                    <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}" class="text-white text-decoration-none">
-                        <span class="small">
-                            {{ $item->gender->name }} - {{ __('main.years_old', ['age' => $item->age]) }}
-                        </span>
-                    </a>
+        <div class="card card-sm mb-3  card-hover">
+            <div class="card-header">
+                <div class="d-flex align-items-center gap-3">
+                  @if(!empty($item->user->avatar))
+                            <img src="{{ asset('storage/app/public/images/avatar/'.$item->user->avatar) }}" alt="" class="rounded-pill img-fluid" width="50">
+                        @else
+                            <!-- Si l'auteur du post n'a pas d'avatar, affichez une version par défaut -->
+                            <img src="{{ asset('storage/app/public/images/avatar/user-2.jpg') }}" alt="" class="rounded-pill img-fluid" width="50">
+                        @endif
+                  <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}" class="text-white text-decoration-none">
+                    <span class="mb-0 text-dark fs-5">
+                      {{ $item->user->name }}
+                    </span>
+                </a>
+                  
                 </div>
             </div>
+
+            
                 
             <div class="card-body">
-                <p class="small">
+                <p class="card-text">
                     {{ Str::limit($item->story, 120) }}
                 </p>
-                <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}">
-                    {{ __('Continue') }} <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="7 7 12 12 7 17" /><polyline points="13 7 18 12 13 17" /></svg>
+                <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}" class="btn mb-1 waves-effect waves-light btn-rounded btn-outline-secondary">
+                    {{ __('Continue') }} 
                 </a>
             </div>
 
         </div>
+
+        {{-- <div class="card card-hover">
+          <div class="card-header bg-info">
+            <h4 class="mb-0 text-white fs-5">Card Title</h4>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Special title treatment</h3>
+            <p class="card-text">
+              With supporting text below as a natural lead-in to
+              additional content.
+            </p>
+            <a href="javascript:void(0)" class="btn btn-inverse">Go somewhere</a>
+          </div>
+        </div> --}}
         @empty
         {{ __('There are no stories to show.') }}
         @endforelse

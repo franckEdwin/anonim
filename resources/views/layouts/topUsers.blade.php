@@ -50,6 +50,7 @@
                       <span class="avatar avatar-xs avatar-rounded">
                         @if(!empty($user->avatar))
                             <img src="{{ asset('storage/app/public/images/avatar/'.$user->avatar) }}" alt="user_avatar" width="40" height="40" class="rounded-circle" />
+
                         @endif
                         
                       </span>

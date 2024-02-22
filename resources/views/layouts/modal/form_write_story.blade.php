@@ -184,22 +184,21 @@
                                 @enderror
                             </div>
                         </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label class="form-label">{{ __('main.tags') }}</label>
                                 <input type="text" class="form-control @error('tags') is-invalid @enderror"
                                     name="tags" placeholder="{{ __('main.separate_tag') }}"
                                     value="{{ old('tags') }}">
-                            </div>
+                            </div> --}}
 
                             <div class="mb-3">
                                 <div class="col">
-                                    <div
-                                        class="form-selectgroup form-selectgroup-pills @error('category_id', 'write') is-invalid @enderror">
+                                    <div class="form-selectgroup form-selectgroup-pills  @error('category_id', 'write') is-invalid @enderror">
                                         @foreach ($categories as $category)
-                                            <label class="form-selectgroup-item">
+                                            <label class="form-selectgroup-item form-check-label">
                                                 <input type="radio" id="category_id" name="category_id"
                                                     value="{{ $category->id }}"
-                                                    class="form-selectgroup-input @error('category_id', 'write') is-invalid @enderror"
+                                                    class="form-check-input form-selectgroup-input @error('category_id', 'write') is-invalid @enderror"
                                                     {{ old('category_id') == $category->id ? 'checked' : '' }}
                                                     @if (Auth::user()->total_point_count() < $category->score) disabled @endif>
                                                 <span class="form-selectgroup-label"
@@ -216,6 +215,9 @@
                                         @enderror
 
                                     </div>
+
+                                    
+                                    
                                 </div>
                             </div>
 
@@ -259,22 +261,7 @@
 </div>
 
 
-<!-- <script>
-    function updateCharacterCount(textarea) {
-        var maxLength = 100; // Le nombre maximum de caractères autorisés
-        var currentLength = textarea.value.length;
-        var characterCountElement = document.getElementById('characterCount');
 
-        characterCountElement.textContent = currentLength + '/' + maxLength;
-
-        if (currentLength > maxLength) {
-            // Vous pouvez ajouter une classe CSS ou d'autres styles pour indiquer que la limite est dépassée.
-            characterCountElement.style.color = 'red';
-        } else {
-            characterCountElement.style.color = ''; // Réinitialiser la couleur si elle était rouge
-        }
-    }
-</script> -->
 
 
 <script>
