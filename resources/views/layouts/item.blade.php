@@ -49,7 +49,7 @@
                 <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}">
             @endif
                 <!-- ... Autres balises et éléments HTML ... -->
-                <p class="fs-5 my-4 fw-semibold d-block lh-sm">{{ $item->title }}</p>
+                <p class="fs-5 my-4 fw-semibold text-dark">{{ $item->title }}</p>
             @if(Auth::check())
                 </a>
             @endif
@@ -64,6 +64,17 @@
                     </a>
                 @endif
             </div>
+
+            <div class="mt-4 pb-3 border-bottom">
+                <div class="">
+                @foreach($item->tags as $tag)  
+                  <span class="bg-light-success text-success badge">{{ $tag->slug }}</span>
+                @endforeach
+                </div>
+              </div>
+
+            
+<br>
             
                 <div class="d-flex align-items-center gap-4">
 
@@ -79,32 +90,7 @@
                         </div>
                     </div>
 
-                    {{-- <div class="d-flex align-items-center gap-2">
-                        <a href="javascript:void(0);" onclick="toggleLike({{ $item->id }})" class="d-flex">
-                            <i id="heart-icon-{{ $item->id }}" class="ti ti-heart-filled text-dark fs-6"></i>
-                            <span class="ms-1 text-dark" id="like-{{ $item->id }}">@json($item->likers()->count())</span>
-                        </a>
-                    </div> --}}
-
-                            
-
-                    
-                    <style>
-                        .liked {
-                            animation: heartBeat 0.5s;
-                        }
-                    
-                        @keyframes heartBeat {
-                            0%, 100% {
-                                transform: scale(1);
-                            }
-                    
-                            50% {
-                                transform: scale(1.2);
-                            }
-                        }
-                    </style>
-
+                  
                     <div class="d-flex align-items-center gap-2">
                         <i class="ti ti-eye text-dark fs-6"></i>{{ $item->itemView() }}
                     </div>
@@ -113,24 +99,6 @@
                         <i class="ti ti-message-2 text-dark fs-6"></i>
                         {{ __('main.card_comments', ['count' => $item->comments()->count()]) }}
                     </div>
-
-                    {{-- <div class="d-flex align-items-center gap-2">
-                        <a class="text-white d-flex align-items-center justify-content-center bg-primary p-2 fs-4 rounded-circle" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Like">
-                          <i class="ti ti-eye fs-5"></i>
-                        </a>
-                        <span class="text-dark fw-semibold">{{ $item->itemView() }}</span>
-                      </div> --}}
-                    
-
-                    {{-- <div class="ms-auto">
-                        @if(Auth::check())
-                            <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}" class="link text-muted">
-                                <i class="ti ti-message-circle me-1 fs-5"></i>{{ __('main.card_comments', ['count' => $item->comments()->count()]) }}
-                            </a>
-                        @endif
-                    </div> --}}
-                    
-                    
 
                     <div class="d-flex align-items-center fs-2 ms-auto">
                         {{-- <i class="ti ti-point text-dark"></i>Tue, Jan 10 --}}
@@ -182,7 +150,7 @@
                 <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}">
             @endif
                 <!-- ... Autres balises et éléments HTML ... -->
-                <p class="fs-5 my-4 fw-semibold d-block lh-sm">{{ $item->title }}</p>
+                <p class="fs-5 my-4 fw-semibold text-dark">{{ $item->title }}</p>
             @if(Auth::check())
                 </a>
             @endif
@@ -198,15 +166,20 @@
                 @endif
             </div>
 
+            <div class="mt-4 pb-3 border-bottom">
+                <div class="">
+                @foreach($item->tags as $tag)  
+                  <span class="bg-light-danger text-danger badge">{{ $tag->slug }}</span>
+                @endforeach
+                </div>
+              </div>
+
+            
+<br>
+
+
                 <div class="d-flex align-items-center gap-4">
                     
-                    {{-- <div class="d-flex align-items-center gap-2">
-                        <a href="javascript:void(0);" onclick="toggleLike({{ $item->id }})" class="d-flex">
-                            <i id="heart-icon-{{ $item->id }}" class="ti ti-heart-filled text-dark fs-6"></i>
-                            <span class="ms-1 text-dark" id="like-{{ $item->id }}">@json($item->likers()->count())</span>
-                        </a>
-                    </div> --}}
-
                     <div class="d-flex align-items-center gap-2">
                         <div class="col">
                             <a href="javascript:void(0);" onclick="likePost({{ $item->id }})" class="d-flex">
@@ -218,26 +191,7 @@
                            
                         </div>
                     </div>
-                    
-                    <style>
-                        .liked {
-                            animation: heartBeat 0.5s;
-                        }
-                    
-                        @keyframes heartBeat {
-                            0%, 100% {
-                                transform: scale(1);
-                            }
-                    
-                            50% {
-                                transform: scale(1.2);
-                            }
-                        }
-                    </style>
-                    
-                    
-                    
-                    
+                 
                     <div class="d-flex align-items-center gap-2">
                         <i class="ti ti-eye text-dark fs-6"></i>{{ $item->itemView() }}
                     </div>
@@ -247,22 +201,17 @@
                         {{ __('main.card_comments', ['count' => $item->comments()->count()]) }}
                     </div>
 
-                    {{-- <div class="d-flex align-items-center gap-2">
-                        <a class="text-white d-flex align-items-center justify-content-center bg-primary p-2 fs-4 rounded-circle" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Like">
-                          <i class="ti ti-eye fs-5"></i>
+                    <div class="d-flex align-items-center gap-2">
+                        @foreach($item->tags as $tag)
+                        <a href="{{ route('tag', ['slug' => $tag->slug]) }}" class="badge bg-azure-lt">
+                            {{ $tag->slug }}
                         </a>
-                        <span class="text-dark fw-semibold">{{ $item->itemView() }}</span>
-                      </div> --}}
+                        @endforeach
+                    </div>
+
                     
 
-                    {{-- <div class="ms-auto">
-                        @if(Auth::check())
-                            <a href="{{ route('show', ['id'=>$item->id, 'slug'=>$item->slug]) }}" class="link text-muted">
-                                <i class="ti ti-message-circle me-1 fs-5"></i>{{ __('main.card_comments', ['count' => $item->comments()->count()]) }}
-                            </a>
-                        @endif
-                    </div> --}}
-                    
+                   
                     
 
                     <div class="d-flex align-items-center fs-2 ms-auto">

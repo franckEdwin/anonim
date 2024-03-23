@@ -25,10 +25,10 @@
                         </p>
                         <div class="empty-action">
                             <a href="{{ route('login') }}" class="btn">
-                                {{ __('Login') }}
+                                {{ __('Se Conencter') }}
                             </a>
                             <a href="{{ __('register') }}" class="btn btn-primary">
-                                {{ __('Signup') }}
+                                {{ __("S'inscrire") }}
                             </a>
                         </div>
                     </div>
@@ -186,17 +186,19 @@
                             </div>
                             
                         </div>
-                            {{-- <div class="mb-3">
+                            <div class="mb-3">
                                 <label class="form-label">{{ __('main.tags') }}</label>
                                 <input type="text" class="form-control @error('tags') is-invalid @enderror"
                                     name="tags" placeholder="{{ __('main.separate_tag') }}"
                                     value="{{ old('tags') }}">
-                            </div> --}}
+                            </div>
 
-                            <div class="mb-3">
-                                <div class="col">
-                                    <div class="form-check form-check-primary form-check-inline  @error('category_id', 'write') is-invalid @enderror">
-                                        @foreach ($categories as $category)
+                            <div><label class="form-label">Catégorie</label></div>
+
+                            <div class="d-flex">
+                                @foreach ($categories as $category)
+                                    <div class="n-chk"> <!-- Utilisation d'une colonne de largeur 3/12 pour 4 catégories -->
+                                        <div class="form-check form-check-primary form-check-inline @error('category_id', 'write') is-invalid @enderror">
                                             <label class="form-selectgroup-item form-check-label">
                                                 <input type="radio" id="category_id" name="category_id"
                                                     value="{{ $category->id }}"
@@ -208,23 +210,15 @@
                                                     {{ $category->name }}
                                                 </span>
                                             </label>
-                                        @endforeach
-
+                                        </div>
                                         @error('category_id', 'write')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-
                                     </div>
-
-                                    
-                                    
-                                </div>
+                                @endforeach
                             </div>
-
-                            
-
                         </div>
 
                         <input type="hidden" name="genders_id" value="{{ Auth::user()->genders_id }}">
@@ -266,7 +260,7 @@
 
 <script>
     function updateCharacterCount(textarea) {
-        var maxLength = 400; // Le nombre maximum de caractères autorisés
+        var maxLength = 200; // Le nombre maximum de caractères autorisés
         var characterCountElement = document.getElementById('characterCount');
 
         // Tronquer le contenu si la longueur dépasse maxLength

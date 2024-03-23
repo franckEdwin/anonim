@@ -82,7 +82,7 @@ return [
     |
     */
    
-    'write_a_story' => "Écrire une histoire",
+    'write_a_story' => "Anonime Post",
     'title' => "Titre",
     'story' => "Histoire",
     'categories' => "Catégories",
@@ -202,7 +202,7 @@ return [
     'profile_count_post' => ":count histoires",
     'profile_count_comments' => ":count commentaires",
     'read_story' => "Lire l'histoire",
-    'member_since' => "Membre depuis le :date",
+    'member_since' => "Membre depuis :date",
     
     /*
     |--------------------------------------------------------------------------

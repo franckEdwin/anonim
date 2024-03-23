@@ -46,6 +46,11 @@
         <link rel="stylesheet" href="{{ asset('resources/views/assets2/dist/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('resources/views/assets2/dist/css/style.min.css') }}">
         <link id="themeColors" rel="stylesheet" href="../../dist/css/style.min.css" />
+
+        <!-- Inclure les fichiers Quill -->
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
         
         <script type="text/javascript">"use strict";var APP_URL = {!! json_encode(url('/')) !!}</script>
         
@@ -56,13 +61,15 @@
             @include('layouts.navigation')
             <div class="content">
                 <div class="container-xl">
-                    <br><br><br><br><br><br>
                     @yield('content')
                 </div>
             </div>
         </div>
         
         @include('layouts.footer')
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+
 
         
        

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="">
 
     <div class="card-body">
         {{-- <div>
@@ -10,7 +10,7 @@
             @csrf
             <input type="hidden" id="recipient_id" name="recipient_id" value="{{ $item->user_id }}">
             <input type="hidden" id="item_id" name="item_id" value="{{ $item->id }}">
-            <textarea type="text" class="form-control col-md-3 py-3  @error('comment_text') is-invalid @enderror" name="comment_text" placeholder="Comment"></textarea>
+            <textarea type="text" class="form-control col-md-3 py-3  @error('comment_text') is-invalid @enderror" name="comment_text" placeholder="Laisser un commentaire"></textarea>
             @error('comment_text')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -18,7 +18,12 @@
             @enderror
             <br>
             <div>
-                <button type="submit" class="btn btn-primary">Commenter</button>
+                {{-- <button type="submit" class="btn btn-primary">Commenter</button> --}}
+                
+                <button type="submit" class="justify-content-center w-100 btn mb-1 btn-rounded btn-primary d-flex align-items-center">
+                    <i class="ti ti-send fs-4 me-2"></i>
+                    Commenter
+                  </button>
             </div>
         </form>
       </div>
@@ -49,7 +54,7 @@
             <!-- Reste du code inchangé -->
         </div>
     @empty
-        <div class="empty">
+        <div class="">
             {{-- <div class="empty-img">
                 <img src="{{ asset('resources/views/assets/img/comments.svg') }}" alt="">
             </div>
